@@ -1,0 +1,163 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url("/assets/qsa/fonts/static/Quicksand-Medium.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Regular.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-SemiBold.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Light.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Bold.ttf") format('truetype');
+}
+
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 50px auto;
+    height: 100%;
+    font-family: 'Quicksand';
+
+    .header {
+        background: url("/assets/qsa/header_pattern_svg.svg");
+        height: 50px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+
+        .logo-icon {
+            content: url('/assets/qsa/icons/logo_used_in_header.svg');
+            width: auto;
+            height: 36px;
+            margin-left: 24px;
+        }
+    }
+
+    .main {
+        border-top: 3px solid #31B9E4;
+        background: #EEEEEE;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .login-card {
+            margin: auto 0 auto 0;
+            width: 488px;
+            background: #FFFFFF;
+            border-top: 4px solid #3AC7EC;
+            padding-top: 20px;
+
+            .card-header {
+                display: flex;
+                justify-items: center;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+
+                .card-header-text {
+                    grid: 2/-2;
+                    text-align: center;
+                    font: normal normal medium 24px/28px 'Quicksand';
+                    font-size: 24px;
+                    color: #222222;
+                }
+            }
+
+            .form-card {
+                margin-left: 32px;
+                margin-right: 32px;
+
+                .text-form,
+                .pwd-form {
+                    margin-top: 32px;
+
+                    .forgot {
+                        text-align: right;
+                        margin-top: 1px;
+                        font: normal normal medium 14px/18px Quicksand;
+                        font-size: 14px;
+                        color: #1F7A54;
+                    }
+
+                    input[type="text"],
+                    input[type="password"] {
+                        width: 100%;
+                        border: 0;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                    }
+                }
+
+                .remember-checkbox {
+                    margin-top: 24px;
+
+                    input[type="checkbox"] {
+                        height: 24px;
+                        vertical-align: middle;
+                        accent-color: rgba(31, 122, 84, 1);
+                        transform: scale(1.5);
+                    }
+
+                    .remember-text {
+                        vertical-align: middle;
+                        font-size: 16px;
+                        font: normal normal medium 16px/20px 'Quicksand';
+                        color: #222222;
+                    }
+                }
+
+                .form-button {
+                    margin-top: 34px;
+                    margin-bottom: 24px;
+                    text-align: center;
+
+                    button {
+                        height: 40px;
+                        width: 216px;
+                        color: #1F2834;
+                        background: rgba(63, 210, 139, 1) 0% 0% no-repeat padding-box;
+                        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.24);
+                        border: none;
+                        font-size: 14px;
+                        font-family: 'Quicksand';
+                    }
+                }
+            }
+
+            .create-account-text,
+            .not-registered-text {
+                display: flex;
+                justify-content: center;
+            }
+
+            .not-registered-text {
+                font-weight: normal;
+                color: #222222;
+                font-size: 12px;
+            }
+
+            .create-account-text {
+                margin-top: 4px;
+                margin-bottom: 24px;
+                color: #1F7A54;
+            }
+        }
+
+        .about-us {
+            font-size: 14px;
+            color: #1F7A54;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+::placeholder {
+    font: normal normal medium 16px/20px 'Quicksand';
+    font-size: 16px;
+    font-family: 'Quicksand';
+    color: #666666;
+}

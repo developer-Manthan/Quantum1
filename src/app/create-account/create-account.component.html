@@ -1,0 +1,45 @@
+<div class="header">
+  <span class="logo-icon"></span>
+</div>
+<div class="create-account">
+  <div class="back-div">
+    <span class="back-icon"></span>
+  </div>
+  <div class="create-text">Create an Account</div>
+  <div class="buttons">
+    <button class="cancel" mat-button>Cancel</button>
+    <button mat-button [ngClass]="{'create': !isButtonDisabled(), 'disabled-btn': isButtonDisabled()}"
+            [disabled]="isButtonDisabled()"
+            (click)="createProfile()">Create
+  </button>
+  </div>
+</div>
+
+<div class="container">
+  <mat-stepper linear #stepper>
+    <mat-step [editable]="isEditable">
+        <ng-template matStepLabel class="stepper-label">Personal Information</ng-template>
+        <app-personal-information [(loginDetails)]="loginDetails"></app-personal-information>
+        <div class="footer-buttons">
+          <button mat-button matStepperNext class="next-button" [disabled]="!formValid">Next</button>
+        </div>
+    </mat-step>
+    <mat-step [editable]="isEditable">
+      <form>
+        <ng-template matStepLabel>Qualification</ng-template>
+          <app-qualification [(eduDetails)]="eduDetails" [(proDetails)]="proDetails"></app-qualification>
+        <div class="footer-buttons">
+          <button mat-button matStepperPrevious class="next-button">Back</button>
+          <button mat-button matStepperNext class="next-button">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Review and Proceed</ng-template>
+      <app-review [loginDetails]="loginDetails" [eduDetails]="eduDetails" [proDetails]="proDetails"></app-review>
+      <div class="footer-buttons">
+        <button mat-button matStepperPrevious class="next-button">Previous</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

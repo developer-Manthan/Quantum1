@@ -1,0 +1,87 @@
+<div class="form-container">
+  <div class="form-1">
+    <div class="form-fields">
+      <form class="login-form" [formGroup]="firstFormGroup">
+        <div class="mb-40 mt-24">
+          <label class="form-label">First Name*</label>
+          <input type="text" [(ngModel)]="loginDetails.firstName" name="first-name" formControlName="fName">
+          <div *ngIf="firstFormGroup.controls['fName']" class="alert">
+            <div *ngIf="firstFormGroup.controls['fName'].errors?.['required']">
+              First Name is required.
+            </div>
+            <div *ngIf="firstFormGroup.controls['fName'].errors?.['minlength']">
+              First Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Last Name*</label>
+          <input type="text" [(ngModel)]="loginDetails.lastName" name="last-Name" formControlName="lName">
+          <div *ngIf="firstFormGroup.controls['lName'].invalid && (firstFormGroup.controls['lName'].touched)" class="alert">
+            <div *ngIf="firstFormGroup.controls['lName'].errors?.['required']">
+              Last Name is required.
+            </div>
+            <div *ngIf="firstFormGroup.controls['lName'].errors?.['minlength']">
+              Last Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Email*</label>
+          <input type="email" [(ngModel)]="loginDetails.email" name="email" #email="ngModel" email required>
+          <div *ngIf="email.invalid && (email.touched)" class="alert">
+            <div *ngIf="email.errors">
+              Enter valid email
+            </div>
+          </div>
+        </div>
+        <div class="mb-40 phone-number">
+          <label class="form-label">Phone Number*</label>
+          <span>+ 91 </span><input type="number" [(ngModel)]="loginDetails.phoneNumber" name="phone-number" required #number="ngModel" pattern="\d{10}">
+          <div *ngIf="number.invalid && (number.touched)" class="alert">
+            <div *ngIf="number.errors">
+              Enter valid 10 digit number
+            </div>
+          </div>
+        </div>
+        <div class="mb-40 upload">
+          <span class="upload-icon"></span>
+          <label class="upload-label">&nbsp;UPLOAD RESUME</label>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Enter Portfolio URL (if any)</label>
+          <input type="text" name="protfolio" [(ngModel)]="loginDetails.portfolioURL">
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Preffered Job Roles*</label>
+          <div *ngFor="let jobRoles of loginDetails.prefJobRoles">
+            <mat-checkbox class="angular-check" [(ngModel)]="jobRoles.selected" name="{{jobRoles.name}}">
+              {{jobRoles.name}}
+            </mat-checkbox>
+          </div>
+          <!-- <mat-checkbox class="angular-check" [(ngModel)]="loginDetails.prefJobRoles[0].selected" name="Instructional Designer">
+            Instructional Designer
+          </mat-checkbox><br>
+          <mat-checkbox class="angular-check">Software Engineer</mat-checkbox><br>
+          <mat-checkbox class="angular-check">Software Quality Engineer</mat-checkbox> -->
+        </div>
+        <div class="mb-40">
+          <label class="form-label">
+            If You Are Registering Via A Referral, Please Mention Full Name Of The  Employee Who Referred You
+          </label>
+          <input type="text" name = "referred-by" [(ngModel)]="loginDetails.referredBy" >
+        </div>
+        <div class="checkbox">
+          <mat-checkbox class="angular-check" name="send updates" [(ngModel)]="loginDetails.sendUpdates">Send me job related updates via mail</mat-checkbox>
+        </div>
+      </form>
+    </div>
+    <div class="display-picture">
+      <img src="/assets/walkInIcons/profile-pic.png" alt="profile-pic">
+      <a href="#">UPLOAD DISPLAY PICTURE</a>
+      <label class="img-label">Max. image size: 5 MB</label>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,167 @@
+<div class="qualification-container">
+  <cdk-accordion class="example-accordion">
+    <cdk-accordion-item #eduAccordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+      [attr.id]="'accordion-header-0'" [attr.aria-expanded]="eduAccordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-0'">
+      <div class="example-accordion-item-header" (click)="eduAccordionItem.toggle()">
+        Educational Qualifications
+        <span class="example-accordion-item-description">
+          Click to {{ eduAccordionItem.expanded ? 'close' : 'open' }}
+        </span>
+      </div>
+      <div class="example-accordion-item-body" role="region" [style.display]="eduAccordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-0'" [attr.aria-labelledby]="'accordion-header-0'">
+        <div class="edu-form">
+          <div class="mb-40">
+            <label class="form-label">Aggregate Percentage*</label>
+            <input type="number" [(ngModel)] = "eduDetails.percentage">
+          </div>
+          <div class="mb-40">
+            <label class="form-label">Year of Passing*</label>
+            <select [(ngModel)] = "eduDetails.yearSelected">
+              <option *ngFor="let yop of eduDetails.yearOfPassing | keyvalue" value="{{yop.key}}">{{yop.value}}</option>
+            </select>
+          </div>
+          <div class="full-width mb-40">
+            <div class="full-width-items">
+              <label class="form-label">Qualification*</label>
+              <select [(ngModel)] = "eduDetails.qualificationSelected">
+                <option *ngFor="let qua of eduDetails.qualification | keyvalue" value="{{qua.key}}">{{ qua.value }}</option>
+              </select>
+            </div>
+            <div class="full-width-items">
+              <label class="form-label">Stream*</label>
+              <select [(ngModel)] = "eduDetails.streamSelected">
+                <option *ngFor="let st of eduDetails.stream | keyvalue" value="{{st.key}}">{{ st.value }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="full-width mb-40">
+            <div class="full-width-items">
+              <label class="form-label">College*</label>
+              <!-- [(ngModel)]="eduDetails.collegeSelected" -->
+              <select [(ngModel)] = "eduDetails.collegeSelected">
+                <option *ngFor="let coll of eduDetails.college | keyvalue" value="{{coll.key}}">{{ coll.value }}</option>
+              </select>
+            </div>
+            <div class="full-width-items">
+              <label class="form-label">If others, please enter your college name*</label>
+              <input type="text" [(ngModel)]="eduDetails.otherCollegeName">
+            </div>
+          </div>
+
+          <div class="mb-40">
+            <label class="form-label">Where is your college located?*</label>
+            <input type="text" [(ngModel)]="eduDetails.collegeLocation">
+          </div>
+
+        </div>
+      </div>
+    </cdk-accordion-item>
+  </cdk-accordion>
+
+  <cdk-accordion class="example-accordion">
+    <cdk-accordion-item #proAccordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="1"
+      [attr.id]="'accordion-header-1'" [attr.aria-expanded]="proAccordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-1'">
+      <div class="example-accordion-item-header" (click)="proAccordionItem.toggle()">
+        Professional Qualifications
+        <span class="example-accordion-item-description">
+          Click to {{ proAccordionItem.expanded ? 'close' : 'open' }}
+        </span>
+      </div>
+      <div class="example-accordion-item-body" role="region" [style.display]="proAccordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-1'" [attr.aria-labelledby]="'accordion-header-1'">
+        <div class="pro-form">
+          <label class="form-label">Applicant Type*</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                           [(ngModel)]="proDetails.typeSelected">
+            <mat-radio-button class="example-radio-button"
+                              *ngFor="let apt of proDetails.applicantType | keyvalue" value="{{apt.key}}">
+              {{ apt.value }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="pro-form mt-8">
+
+          <div *ngIf="proDetails.typeSelected != 'fresher'">
+            <div class="mb-40">
+              <label class="form-label">Years of Experience*</label>
+              <input type="number" [(ngModel)]="proDetails.yearsOfExperience">
+            </div>
+            <div class="mb-40">
+              <label class="form-label">Current CTC* (In Rupees)</label>
+              <input type="text" [(ngModel)]="proDetails.currentCTC">
+            </div>
+            <div class="mb-40">
+              <label class="form-label">Expected CTC* (In Rupees)</label>
+              <input type="text" [(ngModel)]="proDetails.expectedCTC">
+            </div>
+            <div class="mb-40 width-50">
+              <label class="form-label">Select All The Technologies You Expertise In*</label>
+              <div *ngFor="let eInTech of proDetails.expertiseInTech">
+                <mat-checkbox class="angular-check" [(ngModel)]="eInTech.selected" name="{{eInTech.name}}">
+                  {{eInTech.name}}
+                </mat-checkbox>
+              </div>
+              <label class="form-label mt-8">If others, please mention</label>
+              <input type="text" [(ngModel)]="proDetails.otherExpertiseTech">
+            </div>
+          </div>
+          <div class="mb-40 width-50">
+            <label class="form-label">Select All The Technologies You Are Familiar In</label>
+            <div *ngFor="let fInTech of proDetails.familiarInTech">
+              <mat-checkbox class="angular-check" [(ngModel)]="fInTech.selected" name="{{fInTech.name}}">
+                {{fInTech.name}}
+              </mat-checkbox>
+            </div>
+            <label class="form-label mt-8">If others, please mention</label>
+            <input type="text" [(ngModel)]="proDetails.otherFamiliarTech">
+          </div>
+
+          <div class="mb-40">
+          <label class="form-label">Are you currently on notice period?*</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                           [(ngModel)]="proDetails.onNoticePeriod">
+            <mat-radio-button class="example-radio-button" *ngFor="let option of proDetails.oNPOptions" [value]="option">
+              {{ option }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+          <div class="full-width mb-40">
+            <div class="full-width-items">
+              <label class="form-label">If Yes, when will your notice period end?*</label>
+              <input type="text" [(ngModel)] = "proDetails.endOfNoticePeriod">
+            </div>
+            <div class="full-width-items">
+              <label class="form-label">How long is your notice period?* (Mention in months)</label>
+              <select [(ngModel)]="proDetails.durationSelected">
+                <option *ngFor="let dur of proDetails.noticePeriodDuration | keyvalue" value="{{dur.key}}">{{ dur.value }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-40">
+          <label class="form-label">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                           [(ngModel)]="proDetails.appearedForTest">
+            <mat-radio-button class="example-radio-button" *ngFor="let option of proDetails.aFTOptions" [value]="option">
+              {{ option }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+          <div class="mb-40 width-50">
+            <label class="form-label">If Yes, which role did you apply for?</label>
+            <input type="text" [(ngModel)]="proDetails.roleAppliedFor">
+          </div>
+
+        </div>
+      </div>
+    </cdk-accordion-item>
+
+  </cdk-accordion>
+</div>

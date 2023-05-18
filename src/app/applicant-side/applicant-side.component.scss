@@ -1,0 +1,131 @@
+.header {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 2px solid #31B9E4;
+    background-color: #1F2834; 
+    font-family: 'Quicksand';
+
+    .logo-icon {
+        content: url("/assets/walkInIcons/Zeus-LMS-logo.svg");
+        height: 36px;
+    }
+
+    .user-icon {
+        height: 40px;
+        width: 40px;
+        color: #FFFFFF;
+        background-color: #3C4E62;
+        border: 2px solid #3FD28B;
+        border-radius: 50%;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.container {
+    font-family: 'Quicksand';
+    background-color: #EEEEEE;
+    padding: 36px 24px;
+
+    .card {
+        padding: 16px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 6px #0000003D;
+
+        .location-span {
+            height: 16px;
+            color: #666666;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+
+            .location-icon {
+                content: url("/assets/walkInIcons/location.svg");
+                height: 14px;
+            }
+        }
+
+        .content-span {
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+
+            .round-border {
+                border: #222222 1px solid;
+                height: 24px;
+                width: 24px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                .software-icon {
+                    content: url("/assets/walkInIcons/Software_Quality_Engineer.svg");
+                }
+    
+                .instructional-icon {
+                    content: url("/assets/walkInIcons/Instructional_Designer.svg");
+                }
+            }
+        }
+
+        .card-title {
+            color: #1F7A54;
+            font-size: 18px;
+        }
+
+        .date-time,
+        .job-roles {
+            margin: 16px 0px;
+
+            .div-title {
+                color: #666666;
+                font-size: 12px;
+            }
+
+            .div-content {
+                color: #222222;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                margin-top: 8px;
+            }
+        }
+
+        .info {
+            display: flex;
+
+            .information-label {
+                height: 18px;
+                width: auto;
+                background-color: #EEDD6B;
+                border-radius: 9px;
+                color: #222222;
+                font-size: 10px;
+                padding: 0 8px;
+            }
+        }
+
+        .btn{
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+
+            .more-details-button {
+                
+                padding: 5px 16px;
+                background-color: #3FD28B;
+                box-shadow: 0px 3px 5px #0000003D;
+                border-radius: 2px;
+                color: #25313F;
+                font-size: 14px;
+            }
+        }
+    }
+}

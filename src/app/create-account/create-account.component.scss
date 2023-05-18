@@ -1,0 +1,206 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url("/assets/qsa/fonts/static/Quicksand-Medium.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Regular.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-SemiBold.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Light.ttf") format('truetype');
+    src: url("/assets/qsa/fonts/static/Quicksand-Bold.ttf") format('truetype');
+}
+
+input {
+    font-family: inherit;
+}
+
+select {
+    font-family: inherit;
+}
+
+.header {
+    font: 'Quicksand';
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 2px solid #24A5D7;
+    background: url("/assets/qsa/header_pattern_image.png");
+
+    .logo-icon {
+        content: url("/assets/walkInIcons/Zeus-LMS-logo.svg");
+        height: 36px;
+    }
+}
+
+.create-account {
+    font: 'Quicksand';
+    height: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #3C4E62;
+
+    .back-div {
+        .back-icon {
+            content: url("/assets/qsa/icons/back.svg");
+            height: 24px;
+        }
+
+        width: 30%;
+    }
+
+    .create-text {
+        color: #FFFFFF;
+        font-size: 20px;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttons {
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
+
+        .cancel,
+        .create,
+        .disabled-btn {
+            color: #1F2834;
+            font-size: 14px;
+            text-align: center;
+            margin-left: 16px;
+            height: 28px;
+            display: flex;
+            width: 90px;
+            text-transform: uppercase;
+            align-items: center;
+            justify-content: center;
+            background: #3FD28B 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 3px #0000003D;
+            border-radius: 2px;
+            font: Quicksand-Medium;
+            cursor:pointer;
+        }
+
+        .disabled-btn {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.container {
+    font: 'Quicksand';
+
+    mat-stepper {
+        background-color: #EEEEEE;
+    }
+
+    .mat-step-text-label {
+        color: #222222;
+    }
+
+    .mat-step-header .mat-step-icon-selected,
+    .mat-step-header .mat-step-icon-state-edit {
+        background-color: #3FD28B;
+        color: #333333;
+    }
+
+    .mat-step-icon,
+    .mat-step-icon-state-edit {
+        height: 32px;
+        width: 32px;
+        font-size: 16px;
+    }
+
+    .mat-stepper-horizontal-line {
+        border-top-color: #DDDDDD;
+        border-top-width: 2px;
+    }
+
+    .mat-step-ico,
+    .mat-step-icon-state-number {
+        background-color: #757575;
+        color: #FFFFFF;
+    }
+
+    .mat-horizontal-stepper-header-container {
+        margin: 24px;
+    }
+
+    .mat-horizontal-stepper-header-container,
+    .mat-horizontal-content-container {
+        margin-bottom: 24px;
+        background-color: #FFFFFF;
+        border-radius: 2px;
+    }
+
+    .mat-horizontal-content-container {
+        background-color: #EEEEEE;
+    }
+
+    .mat-horizontal-stepper-header-container,
+    .mat-horizontal-stepper-header {
+        height: 56px;
+    }
+
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .mdc-text-field {
+        padding: 0px 0px;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #FFFFFF;
+    }
+
+    .mdc-text-field .mdc-text-field__input {
+        caret-color: var(--mdc-theme-primary, #3FD28B);
+    }
+
+    .mat-mdc-checkbox.mat-accent {
+        --mdc-checkbox-selected-focus-icon-color: #1F7A54;
+        --mdc-checkbox-selected-hover-icon-color: #1F7A54;
+        --mdc-checkbox-selected-icon-color: #1F7A54;
+        --mdc-checkbox-selected-pressed-icon-color: #1F7A54;
+    }
+
+    .mat-mdc-checkbox.mat-accent .mdc-checkbox--selected ~ .mdc-checkbox__ripple {
+        background: #1F7A54;
+    }
+
+    .mat-mdc-radio-button.mat-accent {
+        --mdc-radio-selected-focus-icon-color: #1F7A54;
+        --mdc-radio-selected-hover-icon-color: #1F7A54;
+        --mdc-radio-selected-icon-color: #1F7A54;
+        --mdc-radio-selected-pressed-icon-color: #1F7A54;
+        --mat-mdc-radio-checked-ripple-color: #1F7A54;
+    }
+
+    .mat-mdc-radio-button .mdc-radio {
+        padding: 0;
+    }
+
+    .footer-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
+
+        .next-button {
+            width: 90px;
+            height: 28px;
+            background: #3FD28B padding-box;
+            box-shadow: 0px 3px 5px #0000003D;
+            border-radius: 2px;
+            border: none;
+            color: #1F2834;
+            font-size: 14px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    }
+}

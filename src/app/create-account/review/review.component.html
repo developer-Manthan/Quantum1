@@ -1,0 +1,203 @@
+<div class="card-header mb-24">
+  <div class="card-name">Personal Information</div>
+  <div class="edit"><span class="edit-icon"></span>&nbsp;Edit</div>
+</div>
+
+<div class="form-container mb-24">
+  <div class="form-1">
+    <div class="form-fields">
+      <form action="post" class="login-form">
+        <div class="mb-40 mt-24">
+          <label class="form-label">First Name*</label>
+          <div class="form-text">{{loginDetails.firstName}}</div>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Last Name*</label>
+          <div class="form-text">{{loginDetails.lastName}}</div>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Email*</label>
+          <div class="form-text">{{loginDetails.email}}</div>
+        </div>
+        <div class="mb-40 phone-number">
+          <label class="form-label">Phone Number*</label>
+          <div class="form-text">+ 91 {{loginDetails.phoneNumber}}</div>
+        </div>
+        <div class="mb-40 upload">
+          <span class="upload-icon"></span>
+          <label class="upload-label">&nbsp;UPLOAD RESUME</label>
+          <span class="form-text">&nbsp;My_Resume.pdf</span>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Enter Protfolio URL (if any)</label>
+          <div class="form-text">{{loginDetails.portfolioURL}}</div>
+        </div>
+        <div class="mb-40">
+          <label class="form-label">Preffered Job Roles*</label>
+          <div *ngFor="let jobRoles of loginDetails.prefJobRoles">
+            <div class="form-text" *ngIf="jobRoles.selected">
+              {{jobRoles.name}}
+            </div>
+          </div>
+          <!-- <div class="form-text">Instructional Designer</div>
+          <div class="form-text">Software Engineer</div>
+          <div class="form-text">Software Quality Engineer</div> -->
+        </div>
+        <div class="mb-40">
+          <label class="form-label">
+            If You Are Registering Via A Referral, Please Mention Full Name Of The  Employee Who Referred You
+          </label>
+          <div class="form-text">-</div>
+        </div>
+        <section>
+        <div class="checkbox">
+          <mat-checkbox class="angular-check" [checked]="loginDetails.sendUpdates" [disabled]="true">Send me job related updates via mail</mat-checkbox>
+        </div>
+      </section>
+      </form>
+    </div>
+    <div class="display-picture">
+      <img src="/assets/walkInIcons/profile-pic.png" alt="profile-pic">
+    </div>
+  </div>
+</div>
+
+<div class="card-header mb-24">
+  <div class="card-name">Qualifications</div>
+  <div class="edit"><span class="edit-icon"></span>&nbsp;Edit</div>
+</div>
+<div class="qualification-container">
+    <cdk-accordion class="example-accordion">
+      <cdk-accordion-item #eduAccordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+        [attr.id]="'accordion-header-0'" [attr.aria-expanded]="true"
+        [attr.aria-controls]="'accordion-body-0'">
+        <div class="example-accordion-item-header">
+          Educational Qualifications
+        </div>
+        <div class="example-accordion-item-body" role="region"
+          [attr.id]="'accordion-body-0'" [attr.aria-labelledby]="'accordion-header-0'">
+          <div class="edu-form">
+            <div class="mb-40">
+              <label class="form-label">Aggregate Percentage*</label>
+              <div class="form-text">{{eduDetails.percentage}}</div>
+            </div>
+            <div class="mb-40">
+              <label class="form-label">Year of Passing*</label>
+                <div class="form-text">{{eduDetails.yearOfPassing[eduDetails.yearSelected]}}</div>
+            </div>
+            <div class="full-width mb-40">
+              <div class="full-width-items">
+                <label class="form-label">Qualification*</label>
+                <div class="form-text">
+                  {{eduDetails.qualification[eduDetails.qualificationSelected]}}
+                </div>
+              </div>
+              <div class="full-width-items">
+                <label class="form-label">Stream*</label>
+                <div class="form-text">{{eduDetails.stream[eduDetails.streamSelected]}}</div>
+              </div>
+            </div>
+  
+            <div class="full-width mb-40">
+              <div class="full-width-items">
+                <label class="form-label">College*</label>
+                <div class="form-text">{{eduDetails.college[eduDetails.collegeSelected]}}</div>
+              </div>
+              <div class="full-width-items">
+                <label class="form-label">If others, please enter your college name*</label>
+                <div class="form-text">-</div>
+              </div>
+            </div>
+  
+            <div class="mb-40">
+              <label class="form-label">Where is your college located?*</label>
+              <div class="form-text">{{eduDetails.collegeLocation}}</div>
+            </div>
+  
+          </div>
+        </div>
+      </cdk-accordion-item>
+    </cdk-accordion>
+    <cdk-accordion class="example-accordion">
+      <cdk-accordion-item #proAccordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="1"
+        [attr.id]="'accordion-header-1'" [attr.aria-expanded]="true"
+        [attr.aria-controls]="'accordion-body-1'">
+        <div class="example-accordion-item-header">
+          Professional Qualifications
+        </div>
+        <div class="example-accordion-item-body" role="region"
+          [attr.id]="'accordion-body-1'" [attr.aria-labelledby]="'accordion-header-1'">
+          <div class="pro-form">
+            <label class="form-label">Applicant Type*</label>
+            <div class="form-text">{{ proDetails.applicantType[proDetails.typeSelected] }}</div>
+          </div>
+  
+          <div class="pro-form mt-8">
+            <div *ngIf="proDetails.typeSelected != 'fresher'">
+            <div class="mb-40">
+              <label class="form-label">Years of Experience*</label>
+              <div class="form-text">{{proDetails.yearsOfExperience}}</div>
+            </div>
+            <div class="mb-40">
+              <label class="form-label">Current CTC* (In Rupees)</label>
+              <div class="form-text">{{ proDetails.currentCTC }}</div>
+            </div>
+            <div class="mb-40">
+              <label class="form-label">Expected CTC* (In Rupees)</label>
+              <div class="form-text">{{ proDetails.expectedCTC }}</div>
+            </div>
+            <div class="mb-40 width-50">
+              <label class="form-label">Select All The Technologies You Expertise In*</label>
+              <div *ngFor="let exp of proDetails.expertiseInTech">
+                <div class="form-text" *ngIf="exp.selected">
+                  {{exp.name}}
+                </div>
+              </div>
+              <label class="form-label mt-8">If others, please mention</label>
+              <div class="form-text">-</div>
+            </div>
+          </div>
+  
+            <div class="mb-40 width-50">
+              <label class="form-label">Select All The Technologies You Are Familiar In</label>
+              <div *ngFor="let fam of proDetails.familiarInTech">
+                <div class="form-text" *ngIf="fam.selected">
+                  {{fam.name}}
+                </div>
+              </div>
+              <label class="form-label mt-8">If others, please mention</label>
+              <div class="form-text">-</div>
+            </div>
+  
+            <div class="mb-40">
+            <label class="form-label">Are you currently on notice period?*</label>
+            <div class="form-text">{{ proDetails.onNoticePeriod }}</div>
+          </div>
+  
+            <div class="full-width mb-40">
+              <div class="full-width-items">
+                <label class="form-label">If Yes, when will your notice period end?*</label>
+                <div class="form-text">{{ proDetails.endOfNoticePeriod }}</div>
+              </div>
+              <div class="full-width-items">
+                <label class="form-label">How long is your notice period?* (Mention in months)</label>
+                <div class="form-text">{{ proDetails.noticePeriodDuration[proDetails.durationSelected] }}</div>
+              </div>
+            </div>
+  
+            <div class="mb-40">
+            <label class="form-label">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
+            <div class="form-text">{{proDetails.appearedForTest}}</div>
+          </div>
+  
+            <div class="mb-40 width-50">
+              <label class="form-label">If Yes, which role did you apply for?</label>
+              <div class="form-text">-</div>
+            </div>
+  
+          </div>
+        </div>
+      </cdk-accordion-item>
+  
+    </cdk-accordion>
+  </div>
