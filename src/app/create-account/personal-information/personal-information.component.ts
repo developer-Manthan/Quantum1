@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LoginDetails } from 'src/app/common/login-details';
 
 @Component({
@@ -10,25 +10,19 @@ import { LoginDetails } from 'src/app/common/login-details';
 })
 export class PersonalInformationComponent implements OnInit{
   
-  firstFormGroup!: FormGroup;
-
-  constructor(private _formBuilder: FormBuilder) {
-    this.createForm();
-  }
-
-  createForm() {
-    this.firstFormGroup = this._formBuilder.group({
-      fName: ['', [Validators.required, Validators.minLength(4)]],
-      lName: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required]]
-    });
-  }
-
   @Input()
   loginDetails!: LoginDetails;
 
   @Output()
   loginDetailsChange = new EventEmitter<LoginDetails>();
+
+  @Output()
+  formValidityChanged = new EventEmitter<boolean>();
+  heroForm!: FormGroup;
+
+  onFormValueChange() {
+    this.formValidityChanged.emit(this.heroForm.valid);
+  }
 
   ngOnInit(): void {
     
