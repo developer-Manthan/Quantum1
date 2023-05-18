@@ -9,25 +9,29 @@
   <div class="buttons">
     <button class="cancel" mat-button>Cancel</button>
     <button mat-button [ngClass]="{'create': !isButtonDisabled(), 'disabled-btn': isButtonDisabled()}"
-            [disabled]="isButtonDisabled()"
-            (click)="createProfile()">Create
-  </button>
+      [disabled]="isButtonDisabled()" (click)="createProfile()">Create
+    </button>
   </div>
 </div>
 
 <div class="container">
   <mat-stepper linear #stepper>
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel class="stepper-label">Personal Information</ng-template>
-        <app-personal-information [(loginDetails)]="loginDetails"></app-personal-information>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <ng-template matStepLabel class="stepper-label">Personal Information</ng-template>
+      <form [formGroup]="firstFormGroup">
+        <app-personal-information [loginDetails]="loginDetails"
+          [firstFormGroup]="firstFormGroup"></app-personal-information>
         <div class="footer-buttons">
-          <button mat-button matStepperNext class="next-button" [disabled]="!formValid">Next</button>
+          <button mat-button matStepperNext class="next-button" [disabled]="firstFormGroup.invalid" (click)="getFirstValues()">
+            Next
+          </button>
         </div>
+      </form>
     </mat-step>
     <mat-step [editable]="isEditable">
       <form>
         <ng-template matStepLabel>Qualification</ng-template>
-          <app-qualification [(eduDetails)]="eduDetails" [(proDetails)]="proDetails"></app-qualification>
+        <app-qualification [(eduDetails)]="eduDetails" [(proDetails)]="proDetails"></app-qualification>
         <div class="footer-buttons">
           <button mat-button matStepperPrevious class="next-button">Back</button>
           <button mat-button matStepperNext class="next-button">Next</button>

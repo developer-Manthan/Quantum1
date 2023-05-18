@@ -120,7 +120,7 @@
             <label class="form-label mt-8">If others, please mention</label>
             <input type="text" [(ngModel)]="proDetails.otherFamiliarTech">
           </div>
-
+          <div *ngIf="proDetails.typeSelected != 'fresher'">
           <div class="mb-40">
           <label class="form-label">Are you currently on notice period?*</label>
           <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
@@ -143,7 +143,7 @@
               </select>
             </div>
           </div>
-
+        </div>
           <div class="mb-40">
           <label class="form-label">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
           <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"

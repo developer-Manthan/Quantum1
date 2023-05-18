@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { LoginDetails } from '../common/login-details';
 import { EduQualificationDetails } from '../common/edu-qualification-details';
 import { ProQualificationDetails } from '../common/pro-qualification-details';
@@ -18,16 +18,33 @@ export class CreateAccountComponent implements OnInit{
   isEditable = true;
   createDisabled = true;
   
-  formValid = true;
+  // formValid = true;
   @ViewChild('stepper') stepper!: MatStepper;
 
-  onFormValidityChanged(valid: boolean) {
-    this.formValid = valid;
-    console.log(this.formValid);
+  // onFormValidityChanged(valid: boolean) {
+  //   this.formValid = valid;
+  //   console.log(this.formValid);
+  // }
+
+  firstFormGroup!: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) {
+    this.createForm();
+  }
+  
+  createForm() {
+    this.firstFormGroup = this._formBuilder.group({
+      fName: ['', [Validators.required, Validators.minLength(4)]],
+      lName: ['', [Validators.required, Validators.minLength(4)]],
+      email: ['', [Validators.required, Validators.email]],
+      number: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      // jRoles: ['', [(control: FormControl) => {    
+      //   return !control.value ? { 'required': true } : null;
+      // }]]
+      jRoles: ['', [Validators.requiredTrue]]
+    });
   }
 
-  constructor() {}
-  
   isButtonDisabled(): boolean {
     const currentIndex = this.stepper ? this.stepper.selectedIndex : 0;
     return currentIndex === 0 || currentIndex === 1;
@@ -35,6 +52,11 @@ export class CreateAccountComponent implements OnInit{
 
   createProfile() {
     console.log("clicked");
+  }
+
+  getFirstValues() {
+    const formValues = this.firstFormGroup.value;
+    console.log(formValues);
   }
 
   loginDetails: LoginDetails = new LoginDetails(
